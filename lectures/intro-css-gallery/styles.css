@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+
+    background-color: #FFD400;
+    padding: 40px;
+}
+
+main {
+
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    padding: 30px;
+    margin-bottom: 5;
+}
+
+section p{
+
+    background-color: white;
+    padding: 40px;;
+    margin: 45;
+}
+
