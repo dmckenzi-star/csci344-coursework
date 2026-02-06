@@ -1,0 +1,57 @@
+body * {
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+
+/*
+Part 2: Put the main element 
+justify-content and align-items properties to center the card.
+*/
+main {
+    
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card {
+    width: 350px;
+    margin: 40px auto;
+    padding: 24px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+/* Use a comfortable line height and font size for the body text. */
+.card p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Style the button with padding and a border similar to the reference. */
+.card button {
+    padding: 8px 16px;
+    font-size: 1rem;
+    border: 1px solid #333;
+    background-color: transparent;
+    cursor: pointer;
+}
