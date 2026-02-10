@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/*
+  This layer defines a reusable button class using the @apply directive.
+  It bundles together common Tailwind classes for a small button with
+  white text, padding, rounded corners and a hover transition.  The
+  background colour is supplied separately via utility classes (e.g.
+  bg-custom-purple or bg-custom-blue) in your HTML.
+*/
+@layer components {
+  .btn {
+    @apply text-white text-xs py-2 px-3 rounded-md hover:bg-slate-400 duration-300;
+  }
+}
