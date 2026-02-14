@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Title -->
+  <title>inSTARgram Prototype</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header>
+    <nav class="navbar" aria-label="Primary navigation">
+      <!-- App logo -->
+      <a class="logo" href="#main-content">inSTARgram</a>
+
+      <div class="user-info">
+        <!-- Username account-->
+        <span class="username">kingda6d</span>
+        <button class="logout" type="button">Log Out</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page heading -->
+  <h1 class="sr-only">inSTARgram feed</h1>
+
+  <div class="container">
+    <main id="main-content" class="feed">
+      <section class="stories" aria-label="Stories">
+        <h2 class="sr-only">Stories</h2>
+
+        <a class="story" href="#post-1">
+          <img src="https://picsum.photos/seed/story1/60" alt="Story from bella" class="story-img" width="56"
+            height="56" />
+          <span class="story-user">bella</span>
+        </a>
+        <a class="story" href="#post-2">
+          <img src="https://picsum.photos/seed/story2/60" alt="Story from adam" class="story-img" width="56"
+            height="56" />
+          <span class="story-user">adam</span>
+        </a>
+        <a class="story" href="#post-3">
+          <img src="https://picsum.photos/seed/story3/60" alt="Story from charlie" class="story-img" width="56"
+            height="56" />
+          <span class="story-user">charlie</span>
+        </a>
+        <a class="story" href="#post-4">
+          <img src="https://picsum.photos/seed/story4/60" alt="Story from david" class="story-img" width="56"
+            height="56" />
+          <span class="story-user">david</span>
+        </a>
+        <a class="story" href="#post-1">
+          <img src="https://picsum.photos/seed/story5/60" alt="Story from ella" class="story-img" width="56"
+            height="56" />
+          <span class="story-user">ella</span>
+        </a>
+      </section>
+
+      <section class="posts" aria-label="Posts">
+        <h2 class="sr-only">Posts</h2>
+
+        <article id="post-1" class="card">
+          <header class="card-header">
+            <div class="poster">
+              <!-- Post author -->
+              <img src="https://picsum.photos/seed/user1/32" alt="Profile photo for skyChaser" class="poster-img" width="32"
+                height="32" />
+              <a class="poster-name" href="#post-1">skyChaser</a>
+            </div>
+            <button class="icon-button" type="button" aria-label="More options">
+              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+            </button>
+          </header>
+
+          <img src="https://picsum.photos/seed/post1/600/400" alt="Beach photo" class="post-image" width="600"
+            height="400" loading="lazy" />
+
+          <div class="card-actions" aria-label="Post actions">
+            <div class="action-left">
+              <button class="icon-button" type="button" aria-label="Like">
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Comment">
+                <i class="fa-regular fa-comment" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Share">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button class="icon-button" type="button" aria-label="Save">
+              <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <p class="likes-count"><strong>120 likes</strong></p>
+
+          <p class="post-caption">
+            <a class="poster-name inline" href="#post-1">skyChaser</a>
+            Enjoying a sunny day at the beach
+            <a href="#post-1" class="more">more</a>
+          </p>
+
+          <div class="comments" aria-label="Comments">
+            <p class="comment"><strong>adam</strong> Looks amazing!</p>
+            <p class="comment"><strong>charlie</strong> Wish I was there.</p>
+          </div>
+
+          <form class="add-comment" action="#post-1" method="get">
+            <button class="icon-button" type="button" aria-label="Add emoji">
+              <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
+            </button>
+
+            <label class="sr-only" for="comment-1">Add a comment</label>
+            <input id="comment-1" name="comment" type="text" placeholder="Add a comment…" />
+
+            <button class="post-comment" type="submit">Post</button>
+          </form>
+        </article>
+
+        <article id="post-2" class="card">
+          <header class="card-header">
+            <div class="poster">
+              <!-- Post author -->
+              <img src="https://picsum.photos/seed/user2/32" alt="Profile photo for digitalNomad" class="poster-img" width="32"
+                height="32" />
+              <a class="poster-name" href="#post-2">digitalNomad</a>
+            </div>
+            <button class="icon-button" type="button" aria-label="More options">
+              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+            </button>
+          </header>
+
+          <img src="https://picsum.photos/seed/post2/600/400" alt="Mountain photo" class="post-image" width="600"
+            height="400" loading="lazy" />
+
+          <div class="card-actions" aria-label="Post actions">
+            <div class="action-left">
+              <button class="icon-button" type="button" aria-label="Like">
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Comment">
+                <i class="fa-regular fa-comment" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Share">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button class="icon-button" type="button" aria-label="Save">
+              <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <p class="likes-count"><strong>200 likes</strong></p>
+
+          <p class="post-caption">
+            <a class="poster-name inline" href="#post-2">digitalNomad</a>
+            Exploring the mountains
+            <a href="#post-2" class="more">more</a>
+          </p>
+
+          <div class="comments" aria-label="Comments">
+            <p class="comment"><strong>bella</strong> Such a view!</p>
+            <p class="comment"><strong>david</strong> Stunning landscape.</p>
+          </div>
+
+          <form class="add-comment" action="#post-2" method="get">
+            <button class="icon-button" type="button" aria-label="Add emoji">
+              <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
+            </button>
+
+            <label class="sr-only" for="comment-2">Add a comment</label>
+            <input id="comment-2" name="comment" type="text" placeholder="Add a comment…" />
+
+            <button class="post-comment" type="submit">Post</button>
+          </form>
+        </article>
+
+        <article id="post-3" class="card">
+          <header class="card-header">
+            <div class="poster">
+              <!-- Post author -->
+              <img src="https://picsum.photos/seed/user3/32" alt="Profile photo for urbanExplorer" class="poster-img" width="32"
+                height="32" />
+              <a class="poster-name" href="#post-3">urbanExplorer</a>
+            </div>
+            <button class="icon-button" type="button" aria-label="More options">
+              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+            </button>
+          </header>
+
+          <img src="https://picsum.photos/seed/post3/600/400" alt="City lights photo" class="post-image" width="600"
+            height="400" loading="lazy" />
+
+          <div class="card-actions" aria-label="Post actions">
+            <div class="action-left">
+              <button class="icon-button" type="button" aria-label="Like">
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Comment">
+                <i class="fa-regular fa-comment" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Share">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button class="icon-button" type="button" aria-label="Save">
+              <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <p class="likes-count"><strong>85 likes</strong></p>
+
+          <p class="post-caption">
+            <a class="poster-name inline" href="#post-3">urbanExplorer</a>
+            City lights at night
+            <a href="#post-3" class="more">more</a>
+          </p>
+
+          <div class="comments" aria-label="Comments">
+            <p class="comment"><strong>ella</strong> Beautiful picture!</p>
+            <p class="comment"><strong>kingda6d</strong> Love this vibe.</p>
+          </div>
+
+          <form class="add-comment" action="#post-3" method="get">
+            <button class="icon-button" type="button" aria-label="Add emoji">
+              <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
+            </button>
+
+            <label class="sr-only" for="comment-3">Add a comment</label>
+            <input id="comment-3" name="comment" type="text" placeholder="Add a comment…" />
+
+            <button class="post-comment" type="submit">Post</button>
+          </form>
+        </article>
+
+        <article id="post-4" class="card">
+          <header class="card-header">
+            <div class="poster">
+              <!-- Post author -->
+              <img src="https://picsum.photos/seed/user4/32" alt="Profile photo for cosmicDreamer" class="poster-img" width="32"
+                height="32" />
+              <a class="poster-name" href="#post-4">cosmicDreamer</a>
+            </div>
+            <button class="icon-button" type="button" aria-label="More options">
+              <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+            </button>
+          </header>
+
+          <img src="https://picsum.photos/seed/post4/600/400" alt="Paradise landscape photo" class="post-image"
+            width="600" height="400" loading="lazy" />
+
+          <div class="card-actions" aria-label="Post actions">
+            <div class="action-left">
+              <button class="icon-button" type="button" aria-label="Like">
+                <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Comment">
+                <i class="fa-regular fa-comment" aria-hidden="true"></i>
+              </button>
+              <button class="icon-button" type="button" aria-label="Share">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button class="icon-button" type="button" aria-label="Save">
+              <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+            </button>
+          </div>
+
+          <p class="likes-count"><strong>150 likes</strong></p>
+
+          <p class="post-caption">
+            <a class="poster-name inline" href="#post-4">cosmicDreamer</a>
+            Just another day in paradise
+            <a href="#post-4" class="more">more</a>
+          </p>
+
+          <div class="comments" aria-label="Comments">
+            <p class="comment"><strong>charlie</strong> Keep it up!</p>
+            <p class="comment"><strong>adam</strong> Wow!</p>
+          </div>
+
+          <form class="add-comment" action="#post-4" method="get">
+            <button class="icon-button" type="button" aria-label="Add emoji">
+              <i class="fa-regular fa-face-smile" aria-hidden="true"></i>
+            </button>
+
+            <label class="sr-only" for="comment-4">Add a comment</label>
+            <input id="comment-4" name="comment" type="text" placeholder="Add a comment…" />
+
+            <button class="post-comment" type="submit">Post</button>
+          </form>
+        </article>
+      </section>
+    </main>
+
+    <aside class="recommendations" aria-label="Recommendations">
+      <div class="current-user">
+        <img src="https://picsum.photos/seed/current/50" alt="Your profile photo" class="current-profile-img" width="50"
+          height="50" />
+        <div class="current-user-info">
+          <!-- Current user = ME -->
+          <strong class="current-username">kingda6d</strong>
+          <span class="current-user-fullname">@kingda6d</span>
+        </div>
+      </div>
+
+      <h2 class="suggestions-header">Suggestions for you</h2>
+
+      <ul class="suggestions-list">
+        <li class="suggestion">
+          <img src="https://picsum.photos/seed/suggest1/40" alt="Profile photo for amelia" class="suggestion-img"
+            width="40" height="40" />
+          <div class="suggestion-text">
+            <strong class="suggestion-user">amelia</strong>
+            <span class="suggestion-note">Suggested for you</span>
+          </div>
+          <a href="#post-1" class="follow">Follow</a>
+        </li>
+
+        <li class="suggestion">
+          <img src="https://picsum.photos/seed/suggest2/40" alt="Profile photo for brad" class="suggestion-img"
+            width="40" height="40" />
+          <div class="suggestion-text">
+            <strong class="suggestion-user">brad</strong>
+            <span class="suggestion-note">Suggested for you</span>
+          </div>
+          <a href="#post-1" class="follow">Follow</a>
+        </li>
+
+        <li class="suggestion">
+          <img src="https://picsum.photos/seed/suggest3/40" alt="Profile photo for cindy" class="suggestion-img"
+            width="40" height="40" />
+          <div class="suggestion-text">
+            <strong class="suggestion-user">cindy</strong>
+            <span class="suggestion-note">Suggested for you</span>
+          </div>
+          <a href="#post-1" class="follow">Follow</a>
+        </li>
+
+        <li class="suggestion">
+          <img src="https://picsum.photos/seed/suggest4/40" alt="Profile photo for daniel" class="suggestion-img"
+            width="40" height="40" />
+          <div class="suggestion-text">
+            <strong class="suggestion-user">daniel</strong>
+            <span class="suggestion-note">Suggested for you</span>
+          </div>
+          <a href="#post-1" class="follow">Follow</a>
+        </li>
+
+        <li class="suggestion">
+          <img src="https://picsum.photos/seed/suggest5/40" alt="Profile photo for emily" class="suggestion-img"
+            width="40" height="40" />
+          <div class="suggestion-text">
+            <strong class="suggestion-user">emily</strong>
+            <span class="suggestion-note">Suggested for you</span>
+          </div>
+          <a href="#post-1" class="follow">Follow</a>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</body>
+
+</html>
