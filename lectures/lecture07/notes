@@ -1,0 +1,193 @@
+Make sure your folder looks like:
+csci344/exams/exam01-practice/
+Inside exam01-practice, confirm you have:
+index.html, styles.css
+images: taco-temple-logo.webp, salsa.png, guacamole.png, vege-tray.png, ensalada.png, tots.png, churro.png, plantains.png, chichas.png, one-taco.png, two-tacos.png, three-tacos.png
+Part 1) Fix ALL broken image links (HTML) — 10 pts
+Open exam01-practice/index.html and make these edits:
+1A) Add lang to the HTML tag (helps WAVE)
+Change:
+HTML
+Copy code
+<html>
+to:
+HTML
+Copy code
+<html lang="en">
+1B) Fix the logo filename typo
+Find:
+HTML
+Copy code
+<img src="taco-temple-logo.webg" alt="Taco Temple Logo" />
+Change to:
+HTML
+Copy code
+<img src="taco-temple-logo.webp" alt="Taco Temple Logo" />
+(Your current file has .webg which is wrong. �)
+index.html None
+1C) Replace every src="#" with the correct image file
+Replace these (exactly):
+Start With
+Chips & Salsa:
+HTML
+Copy code
+<img src="salsa.png" alt="Photograph of Chips &amp; Salsa" />
+Chips & Guacamole:
+HTML
+Copy code
+<img src="guacamole.png" alt="Photograph of Chips &amp; Guacamole" />
+Mexican Vegetable Tray (ALSO add missing alt):
+HTML
+Copy code
+<img src="vege-tray.png" alt="Photograph of Mexican Vegetable Tray" />
+La Ensalada:
+HTML
+Copy code
+<img src="ensalada.png" alt="Photograph of La Ensalada" />
+Sides
+Temple Tots (ALSO add missing alt):
+HTML
+Copy code
+<img src="tots.png" alt="Photograph of Temple Tots" />
+Churro:
+HTML
+Copy code
+<img src="churro.png" alt="Photograph of Churro" />
+Plantains (ALSO add missing alt):
+HTML
+Copy code
+<img src="plantains.png" alt="Photograph of Plantains" />
+Chichas:
+HTML
+Copy code
+<img src="chichas.png" alt="Photograph of Chichas" />
+Taco Boxes
+Three Taco Box:
+HTML
+Copy code
+<img src="three-tacos.png" alt="Photograph of Three Taco Box" />
+Taco Box (ALSO add missing alt):
+HTML
+Copy code
+<img src="one-taco.png" alt="Photograph of Taco Box" />
+Two Taco Box:
+HTML
+Copy code
+<img src="two-tacos.png" alt="Photograph of Two Taco Box" />
+Your file currently has many src="#" placeholders. �
+index.html None
+✅ Save. Reload in browser. All images should show.
+Part 2) Header styling (Flex) — 20 pts
+Open styles.css and update/add these rules.
+2A) Make header a flex row + spacing
+Add to your header { ... } block (or replace the whole block):
+CSS
+Copy code
+header {
+  background-color: #013672;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+You already have the header background color set. �
+styles.css None
+2B) Make nav links white + no underline
+Add:
+CSS
+Copy code
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 24px;
+}
+2C) Optional: slightly smaller logo on small screens
+Add:
+CSS
+Copy code
+header img {
+  width: 200px;
+  height: auto;
+}
+(You already have header img { width: 200px; } — keep it, this just makes it safer. �)
+styles.css None
+Part 3) Google Font “Passion One” for headings — 15 pts
+3A) Add the Google Font link in <head>
+In index.html, inside <head> above your styles.css link, add:
+HTML
+Copy code
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap">
+3B) Apply it to h1/h2/h3 + center h1 + margins
+In styles.css, add:
+CSS
+Copy code
+h1, h2, h3 {
+  font-family: "Passion One", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 24px;
+}
+
+h2 {
+  margin-top: 24px;
+}
+Part 4) Main layout (Grid cards) — 25 pts
+In styles.css, add:
+4A) .cards = two-column grid with gaps
+CSS
+Copy code
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+4B) .card = two-column grid (text wider than image) + border + padding
+CSS
+Copy code
+.card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  border: 1px solid #cccccc;
+  padding: 16px;
+  align-items: center;
+  background: white;
+}
+4C) Make images fit nicely in the right column
+CSS
+Copy code
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+Part 5) Accessibility (WAVE) — 10 pts
+Run WAVE on the page.
+Fix all red errors. The most common ones here will be:
+Missing alt on images (you fixed these above).
+Missing lang on <html> (you fixed this above).
+Re-run WAVE until no red errors remain.
+Part 6) Responsive (<= 800px) — 15 pts
+At the bottom of styles.css, add:
+CSS
+Copy code
+@media (max-width: 800px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    display: none;
+  }
+}
+Part 7) Link from your homepage — 5 pts
+Open your main homepage file (the one that’s your site’s “home” — usually csci344/index.html).
+Add a link like this somewhere visible:
+HTML
+Copy code
+<a href="exams/exam01-practice/index.html">Taco Temple Menu (Exam 1 Practice)</a>
+Save, refresh homepage, click link, confirm it opens your Taco Temple page.

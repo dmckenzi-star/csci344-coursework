@@ -1,4 +1,99 @@
-body {
+/* Basic reset */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 
-    background-color: gray;
+:root {
+  --bg: #0b1220;
+  --panel: #121a2b;
+  --text: #e8eefc;
+  --muted: #a9b6d3;
+  --link: #9ad0ff;
+  --border: rgba(255, 255, 255, 0.10);
+  --shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  background: radial-gradient(1200px 600px at 20% 0%, #16223a 0%, var(--bg) 60%);
+  color: var(--text);
+}
+
+.container {
+  width: min(980px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 2.25rem 0 1.25rem;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+}
+
+.meta {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.1rem;
+  box-shadow: var(--shadow);
+  margin: 1rem 0;
+}
+
+.card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link-list li {
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.link-list li:first-child {
+  border-top: none;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+.hint {
+  color: var(--muted);
+  margin-left: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.site-footer {
+  padding: 2rem 0;
+  text-align: center;
 }

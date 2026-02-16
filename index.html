@@ -1,31 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David's Homepage</title>
-    <link rel="stylesheet" href="styles.css">
-    <ul>
-  
- 
-</ul>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CSCI 344 coursework homepage for David McKenzi." />
+  <title>David McKenzie | CSCI 344 Coursework</title>
+
+  <!-- Use a relative path (no leading slash) so it works on repo Pages sites -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <h1>David's Homepage</h1>
-   <p>
-  <a href="tutorials/tutorial02_final/index.html">Tutorial 2</a>
-</p>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="title">David McKenzie</h1>
+      <p class="subtitle">CSCI 344 Coursework</p>
 
-<p>
-    
-  <a href="./tutorials/tutorial03/index.html">Tutorial 3 – Tailwind Card</a></li>
- 
+      <p class="meta">
+        Repository: <a href="https://github.com/dmckenzi-star/csci344-coursework">dmckenzi-star/csci344-coursework</a><br />
+        Pages: <a href="https://dmckenzi-star.github.io/csci344-coursework/">dmckenzi-star.github.io/csci344-coursework/</a><br />
+        <span class="muted">Last updated:</span> <time datetime="2026-02-14">Feb 14, 2026</time>
+      </p>
+    </div>
+  </header>
 
-  <a href="tutorials/tutorial02_final/07-tacotemple/index.html">Tutorial 2 – Taco Temple</a>
-</p>
+  <main class="container">
+    <section class="card">
+      <h2>Tutorials</h2>
+      <ul class="link-list">
+      
+        <li>
+          <a href="tutorials/tutorial02_final/07-tacotemple/">Tutorial 2 – Taco Temple</a>
+        </li>
+        <li>
+          <a href="tutorials/tutorial03/">Tutorial 3 – Tailwind Card</a>
+        </li>
+      </ul>
+    </section>
 
-    <p>
-  <a href="homework/hw02/index.html">Homework 2: Photo App Interface</a>
-</p>
+    <section class="card">
+      <h2>Homework</h2>
+      <ul class="link-list">
+        <li>
+          <!-- Choose ONE of these and delete the other -->
+          <!-- If you KEEP the folder name "hw2": -->
+          <a href="homework/hw2/">Homework 2: Photo App Interface</a>
+
+          <!-- If you RENAME the folder to "hw02": -->
+          <!-- <a href="homework/hw02/">Homework 2: Photo App Interface</a> -->
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Notes</h2>
+      <p class="muted">
+      
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© <span id="year"></span> David McKenzie</p>
+    </div>
+  </footer>
+
+  <script>
+    // Small enhancement; safe if JS is disabled.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
