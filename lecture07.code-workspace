@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "lectures/lecture07"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../IN_CLASS_CODE"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "csci344"
+	}
+}
