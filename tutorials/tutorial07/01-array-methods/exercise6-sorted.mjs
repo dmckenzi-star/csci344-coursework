@@ -6,5 +6,5 @@ const students = [
     { name: "Eve", age: 20, grade: 88, major: "Computer Science" }
 ];
 
-const names = students.map((student) => student.name);
-console.log(names);
+const sortedByMajor = students.toSorted((a, b) => a.major.localeCompare(b.major));
+console.log(sortedByMajor);

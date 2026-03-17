@@ -6,5 +6,6 @@ const students = [
     { name: "Eve", age: 20, grade: 88, major: "Computer Science" }
 ];
 
-const names = students.map((student) => student.name);
-console.log(names);
+students.forEach((student) => {
+    console.log(student.name);
+});

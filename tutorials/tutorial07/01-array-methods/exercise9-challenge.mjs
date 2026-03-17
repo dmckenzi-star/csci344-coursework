@@ -6,5 +6,8 @@ const students = [
     { name: "Eve", age: 20, grade: 88, major: "Computer Science" }
 ];
 
-const names = students.map((student) => student.name);
-console.log(names);
+const result = students
+    .filter((student) => student.major === "Computer Science")
+    .toSorted((a, b) => a.grade - b.grade)
+    .map((student) => `<p><strong>${student.name}:</strong> ${student.grade} (${student.major})</p>`);
+console.log(result);
