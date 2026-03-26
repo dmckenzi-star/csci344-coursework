@@ -1,0 +1,127 @@
+Tutorial 8
+CSCI 344: Advanced Web Technologies
+Spring 2026
+
+Today’s Plan
+Set up the HW3 starter files.
+Review how to authenticate to the Photo App REST API.
+Fetch data from the API to display on a web page.
+Posts Panel
+Create data using the API
+Bookmark your post
+Delete data using the API
+Unbookmark your post
+
+1. Set Up
+Open your entire csci344 folder in VS Code.
+On your terminal and navigate to your csci/homework/hw03 folder.
+Run the following command to install your Tailwind dependencies: npm install
+Then, compile your Tailwind stylesheet: npm run build:tailwind
+You are now ready to begin your HW03. Please view your index.html file in live server to verify that it works.
+
+2. Authentication
+For many web applications, different information / capabilities are available to the user depending on who is logged into the system. The authentication workflow is as follows:
+Username and password are sent to the server as a POST HTTP request (see hw03/js/utilities.js)
+The server checks its database to see if the credentials are correct. If they are, the server responds with a secret access token
+For every subsequent request, that token needs to be embedded in the HTTP Header so that the server knows who is logged into the system.
+
+HTTP Request / Response
+Originates from the Client
+
++------------------------------+
+|      HTTP Request            |
++------------------------------+
+| Method: GET                  |
+| URL: /api/resource           | HEADER
+| Host: example.com            | 
+| Authorization: Bearer TOKEN  |
+| Accept: application/json     |
+| User-Agent: MyApp/1.0        |
++------------------------------+
+| No payload for GET requests  | BODY+------------------------------+
+
+
+
+Response from the Server
+
++--------------------------------+
+|     HTTP Response              |
++--------------------------------+
+| Status: 200 OK                 | HEADER
+| Content-Type: application/json |
++--------------------------------+                                
+| {                              |
+|   "id": 123,                   |
+|   "name": "Private info",      | BODY
+|   "username": "webdev"         |
+| }                              |
++--------------------------------+
+
+3. Fetch data from the API
+Our first coding task will be to fetch the user’s feed from the API. 
+Let’s log into https://photo-app-secured.herokuapp.com/ with our credentials to learn how to do this
+Let’s copy the sample JS code and adjust it. Recall the basic pattern for fetching data from a server
+async function getPosts() {
+    const url = "https://photo-app-secured.herokuapp.com/api/posts/?limit=3";
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+}
+
+HTTP Header Information
+3. Fetch data from the API
+The only new thing is that we’re adding some additional HTTP headers:
+
+async function getPosts() {
+    const url = "https://photo-app-secured.herokuapp.com/api/posts/?limit=3";
+    const response = await fetch(url,   
+      {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer <ACCESS_TOKEN>'
+        }
+    });
+    const data = await response.json();
+    console.log(data);
+}
+
+Task 1: Implement Post Panel w/Live Data
+Let’s try implementing the Post Panel….
+
+Task 2: Implement “Add Bookmark”
+Let’s try implementing the “Add Bookmark” functionality….
+
+How do we know how to add a bookmark using the REST API?
+What data does the API need?
+What does the syntax look like?
+
+Task 3: Implement “Remove Bookmark”
+Let’s try implementing the “Remove Bookmark” functionality….
+
+
+How do we know how to add a bookmark using the REST API?
+What data does the API need?
+What does the syntax look like?
+
+Step 1: Create the Bookmark Resource (POST)
+Photo App REST API
+
+Step 1: Create the Bookmark Resource (POST)
+/api/posts/bookmark  (POST)
+Photo App REST API
+
+Step 1: Create the Bookmark Resource (POST)
+Photo App REST API
+/api/posts/bookmark  (POST)
+
+Step 2: Requery Post #234 (GET)
+/api/posts/234  (GET)
+Photo App REST API
+
+Step 2: Requery Post #234 (GET)
+/api/posts/234  (GET)
+Photo App REST API
+
+Step 3: Redraw Post #234
+This will simplify your code (since this is the exact same process you’ll need for bookmarking and commenting)!

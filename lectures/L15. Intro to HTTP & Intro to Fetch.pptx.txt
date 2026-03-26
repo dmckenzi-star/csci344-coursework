@@ -1,0 +1,334 @@
+Intro to HTTP & REST
+CSCI 344: Advanced Web Technologies
+Spring 2026
+
+Weekly Announcements
+Tutorial 7 – due Tonight (3/16)
+HW3 – will be posted by Wednesday
+Tutorial 8 – based on attendance: we will be starting it in class. There are some tricky configuration steps, so please make every effort to attend.
+Office hours cancelled this Tuesday, but we’re on for Thursday and Friday!
+
+Introduction
+This week, we are going to begin interacting with server data. This includes:
+Asking for data and displaying it in a useful way
+Updating, creating, and deleting data from a server
+To do this, we’re going to need to learn more about HTTP
+
+Outline
+Intro to Web Services and Web APIs
+Intro to HTTP
+Interacting with a REST APIs
+
+Outline
+Intro to Web Services and Web APIs
+Intro to HTTP
+Interacting with a REST APIs
+
+Understanding how to work with Web Services & APIs is so useful!
+Many organizations make their data, storage, and compute services available over the web. 
+Understanding how to interact with various web services using the HTTP protocol is perhaps one of the most useful, practical skills that you can learn.
+This isn’t just relevant for web browsers – all modern programming languages have a way to encode, decode, and communicate messages over HTTP.
+
+What is a Web API?
+API → “Application Programming Interface”
+A set of rules that you have to follow to interact with a piece of software
+
+Web API
+An API that you access via HTTP protocol. Offers a systematic way to:
+Create update, read, and delete resources over the internet
+Expose parts of your database to third party clients
+Allow a web client (or any client) to take advantage of resources distributed across providers, servers, organizations, etc.
+
+REST API
+A kind of Web API that honors the “REST” endpoint design conventions
+7
+
+Who uses Web APIs?
+Everyone! 
+Allows organizations to systematically expose parts of their data / resources for authorized users to consume simply and easily. 
+How well you design your API – how easy it is to use, documentation, etc. – determines whether it gets used at all (which impacts the success of your project).
+It’s useful to study how other companies and organizations have designed their APIs – learn from them
+
+Many Organizations Publish their Data via Web APIs
+Companies:
+e.g., Spotify, Yelp, OpenAI, Recipes, etc.
+Government Organizations:
+e.g., NASA, Asheville Open Data Portal, etc.
+Others:
+ART Bus System
+Courses at UNCA
+
+1. How do modern web applications work?
+Let’s examine and deconstruct some websites…
+Spotify
+ART Bus System
+Courses at UNCA
+Sarah made this one :)
+10
+10
+
+Outline
+Intro to Web Services and Web APIs
+Intro to HTTP
+Interacting with Web / REST APIs
+
+HTTP: Hypertext Transfer Protocol
+Web servers communicate through HTTP – a stateless protocol for encoding, decoding, and transmitting messages over the web.
+Stateless mean that no memory is preserved between requests – each request must contain all the information needed on its own to fulfill the request (no stored context).
+HTTP requests and responses have a header (which contains metadata about the request) and a body (which contains the request itself)
+HTTP requests also have methods (GET, POST, PATCH, PUT, DELETE, etc.) – next slide.
+HTTP responses have status codes that tell you whether the request was successful or not.
+12
+12
+
+HTTP Methods
+13
+Method
+Job
+Description
+GET
+Read
+Retrieves / reads a resource (or container of resources) from an address (endpoint) on a server
+POST
+Create
+Creates a NEW resource on a server; done by posting data to an address (endpoint) on a server
+PUT
+Replace
+Replaces a resource on a server
+PATCH
+Update
+Updates a resource on a server
+DELETE
+Deletes
+Deletes a resource on a server 
+Methods tell the server what action they should take (verbs):
+13
+
+HTTP Status Codes
+Status codes provide information re: whether your request was successful. Here is a list of them. Ones you should be familiar with:
+Code
+Definition
+201
+POST method successfully created a resource
+200
+Valid request made (generic success message)
+400
+Client posted a bad request that the server can’t understand
+403
+Forbidden (you don’t have access to it)
+404
+Resource cannot be found
+500
+Server error (usually because there’s a server bug)
+
+Anatomy of an HTTP Request
+Every web request has two main parts:
+
+Headers: Tell the server how to interpret the message, and some information about the message, including:
+Content-Type
+Authorization
+User-Agent
+Body: The actual data being sent (only relevant for PUT, POST, and PATCH). Often transmitted as JSON, but other content formats accepted too.
+
+
+DEMOhttps://photo-app-secured.herokuapp.com/ 
+
+Outline
+Finishing Tutorial 6
+Intro to Web Services and Web APIs
+Intro to HTTP
+Interacting with Web / REST APIs
+
+Standardizing HTTP Interfaces
+In the early days of the web, there were no standards, so everyone build their Web APIs differently. 
+This meant that each time a client wanted to interoperate with a different system, they would have to learn a new set of rules, conventions, etc. 
+
+A variety of different solutions to this problem
+SOAP (1998). Simple Object Access Protocol. Developed by Microsoft. Requests to formulate queries issued via XML; can get complicated to formulate, but still used.
+REST (2000). Representational State Transfer Protocol. Developed by Roy Fielding. Today’s topic. A very widely used approach (at this point in time).
+GraphQL (2015). Developed by Facebook and open sourced in 2015. Allows you request more fine-grained subsets of relational resources (see docs)
+
+Web APIs & the REST Architecture
+One popular way of building a Web API is by following the REST architecture guidelines. Some facts about REST:
+REST: Stands for REpresentational State Transfer  
+An architecture style or design criteria. Not a standard or a language
+Stateless, client-server, cacheable communications protocol 
+Use HTTP requests to post, read, and delete  data. 
+Lightweight  
+Nouns as URI, verbs as HTTP method
+20
+Source: https://www.slideshare.net/cebartling/rest-web-services
+20
+
+Resource-Oriented Architecture
+Resource-orientedAbout storing, manipulating, and querying resources (nouns)
+Addressability   Resources are identified by URIs (which are also called endpoints)
+StatelessnessNo connection state maintained between REST invocations 
+ConnectednessResources should link together in their representations 
+Uniform interface
+Methods (verbs): HTTP GET, PUT, POST, DELETE, HEAD, OPTIONS  
+HTTP status codes
+21
+21
+
+1. Resource
+Noun. The thing that is being represented by data / a document
+Can be a physical object(s) (something you buy on Amazon)or an abstract concept (likes)
+Every resource has at least one name 
+Resources can be list resources (called containers) or detail resources:
+Container/List Resource: https://endpoint/api/posts 
+Detail Resource: https://endpoint/api/posts/6
+22
+Source: https://www.slideshare.net/cebartling/rest-web-services
+Note the plural convention for detail resources
+22
+
+1. Resource
+Example of a resource: https://photo-app-secured.herokuapp.com/api/posts/60 
+{
+  "image_url": "https://picsum.photos/600/430?id=908",
+  "user": {
+    "first_name": "Timothy",
+    "last_name": "Myers",
+    "username": "timothy_myers",	...
+  },
+  "caption": "Spend catch ready administration success..."
+  "likes": 853
+}
+
+
+23
+23
+
+2. Addressability
+Endpoints: Every resource has an address, denoted by a URI (uniform resource identifier)
+Example: https://photo-app-secured.herokuapp.com/api/posts/60  
+The URI enables the client to perform “CRUD” operations	
+create new resources
+update the resource
+read / obtain useful information about the state of a resource
+delete the resource
+24
+Source: https://www.slideshare.net/cebartling/rest-web-services
+24
+
+2. Addressability: Examples
+Container/List Resource (create and read): 
+https://photo-app-secured.herokuapp.com/api/posts
+Detail Resource (update, delete): 
+https://photo-app-secured.herokuapp.com/api/posts/60
+Note that not all container resources make their detail resources accessible
+25
+25
+
+3. Statelessness
+Means that there is no “stored context” or memory across transactions:
+Each request from the client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. 
+The client (i.e. your app) is responsible for:
+storing and handling all application state related information on client side
+sending any state information to the server whenever it is needed
+26
+Source: https://restfulapi.net/statelessness/ 
+26
+
+4. Connectedness
+You should be able to connect / discover relationships between resources from the resource representation. Example (Comment):
+{
+      "text": "Text text text....",
+      "post_id": 6,
+      "user": {
+        "first_name": "Emily",
+        "last_name": "Terry",
+        "username": "emily_terry",
+        "email": "emily_terry@gmail.com",
+		...
+      }
+}
+
+27
+Source: https://www.slideshare.net/cebartling/rest-web-services
+27
+
+5. Uniform Interface
+“Interface” — refers to the way we interact with and modify resources. 
+In REST All resources are created, updated, read, and deleted in the same way, using the HTTP protocol methods (verbs), which are defined in the header of the request. Here are some of them:
+GET
+POST
+PUT
+PATCH
+DELETE
+28
+Source: https://www.slideshare.net/cebartling/rest-web-services
+28
+
+GET
+Retrieves / reads a resource (or container of resources) from an address on a server
+NEVER modify a resource using the GET method – you can do it (technically) but you never should.
+29
+29
+
+POST
+Creates a NEW resource on a server; usually done by posting to the container endpoint:
+
+30
+30
+
+PUT & PATCH
+PUT: Replaces a single resource on a server
+PATCH: Updates part of a resource on a server
+
+31
+31
+
+DELETE
+Permanently deletes a resource on a server
+
+32
+32
+
+HTTP Status Codes
+Use the status codes to help your client understand success and failure. Here is a list of them.
+For HW1 and HW2...
+Use a 201 status code if POST is used to successfully create a resource
+Use a 200 status code for a valid request (most other requests)
+Use a 400 status code if user posted a bad request
+Use a 403 status code if a resource is forbidden (you don’t have access)
+Use a 404 status code if a resource cannot be found
+Use a 500 status code if the server encountered an error
+
+References / Credits
+Much of this REST overview was derived from:
+RESTful Web Serviceshttps://www.slideshare.net/cebartling/rest-web-services
+Christopher Bartling
+Nick Spilman
+Kevin Hakanson
+
+
+34
+34
+
+Interacting with a Web / REST API: Clients
+You can access a REST API via many different clients (including):
+Through your browser
+Through Java, C, C++, Python, or any other language
+In other words, servers talk to other servers via HTTP/S requests
+cURL or wget (command line tools)
+Postman
+And more!
+
+Interacting with a Web API: Authentication
+To use a Web API, you typically need to register with the API provider and obtain an access token (like a secret password).
+This enables the provider to track who is using their API and for what purposes. 
+Many platforms also charge for their data services (i.e. Google, Amazon, Azure, etc.), so people’s bank accounts are often tied to their API key
+We will learn some different approaches to handling authentication later in the semester
+For now, I have already registered each of you with the course Photo App so that we can practice.
+36
+
+Photo App API: Practice
+Navigate to https://photo-app-secured.herokuapp.com/ 
+Log in:
+Username: your unca username (lowercase)
+Anthony and Ben: add first letter of last name
+Password: password
+Once you’ve logged in click on the API Docs link at the top, right-hand side of the web interface.
+(Walkthrough)

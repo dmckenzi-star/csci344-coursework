@@ -1,0 +1,236 @@
+Higher Order Functions
+CSCI 344: Advanced Web Technologies
+Spring 2026
+
+Announcements
+Tutorial 6 due tonight
+Short quiz on Wednesday on JavaScript (Weeks 7 and 8)
+Functions
+Events
+DOM Manipulation
+We will be working on Tutorial 7 all week, so please come to class!
+
+Outline
+Introduction to higher-order functions: forEach
+Array Methods: map, filter, and toSorted
+Exercises
+
+Outline
+Introduction to higher-order functions: forEach
+Array Methods: forEach, map, filter, and toSorted
+Exercises
+
+Intro to Higher-Order Functions
+“Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.”
+“Higher-order functions allow us to abstract over actions, not just values.”
+Source: https://eloquentjavascript.net/05_higher_order.html 
+
+Example: “Do something every X mili”
+// callback function 1
+function checkIfNotification() {
+   console.log("Poll the server to see if there are any messages...");
+}
+
+// callback function 2
+let x = 0;
+function moveItem5Pixels() {
+   console.log(`Move the creature’s x-position to ${ x+=5 }...`);
+}
+
+// Higher order function: “Call a function every X milliseconds”
+setInterval(checkIfNotification, 1000);
+setInterval(moveItem5Pixels, 2000);
+
+Demo (create lecture13 folder)
+
+What just happened?
+A callback function is passed as an argument to another function (called a “higher order” function).
+The higher order function will invoke the callback function when appropriate.
+Examples:
+setTimeout(callback, milliseconds): “I will invoke the callback function after X milliseconds has elapsed.”
+setInterval(callback, milliseconds): “I will invoke the callback function every X milliseconds.”
+
+Big idea: you don’t invoke the callback function right away. Rather, you let the ‘higher order” function invoke it when it makes sense.
+
+But why would you want to do this?!
+
+Example: Iteration with forEach
+There are many computation actions that are so common in JavaScript that they’ve been abstracted into “higher order functions.” One example is iteration:
+What you tend to do every time? visit each item sequentially
+What tends to change? (depending on the context): The operation performed on each item
+Given that this is a common design pattern, why not separate things out:
+One function for iteration
+One function to define the action that happens as you iterate
+Source: https://eloquentjavascript.net/05_higher_order.html 
+
+forEach higher order function 
+forEach is used when you want to do something for each element of an array but not build something new.
+
+Loops through an array
+Invokes the callback function (passed as an argument) once for each element.
+Does not return anything
+
+function printItemToConsole(item) {
+    console.log(item);
+}
+
+forEach callback function
+The callback function is passed into the forEach function. It is always called with three arguments:
+The current element in the array
+The current element’s index in the array (optional)
+The original array (optional)
+
+// any of these sample callback functions is legitimate:
+const logItem1 = (item) => console.log(item); 
+const logItem2 = (item, idx) => console.log(item, idx);
+const logItem3 = (item, idx, arr) => console.log(item, idx, arr);
+
+Note that in JavaScript, it is valid to invoke functions with the wrong number of parameters. I know, weird.
+function printItemToConsole(item) {
+    console.log(item);
+}
+
+What is forEach actually doing?
+Under the hood, the higher-order array method is invoking the item-level function on every element of the array and passing in all three parameters.
+
+// forEach is actually doing something like this:
+forEach(callbackFunction) {
+for(let i = 0; i < this.length; i++) {
+// invoke callback function for each iteration:
+callbackFunction(this[i], i, this);
+}
+}
+Source: https://eloquentjavascript.net/05_higher_order.html 
+
+forEach: named callback functions
+// listconst fruit = ['apple', 'orange', 'banana', 'mango', 'peach'];
+
+// callback function:
+const logItem = (item) => console.log(item);
+
+// callback function:
+function logItem(item) {
+	console.log(item);
+}
+
+
+// forEach invokes printItemToConsole for every item in the list:fruit.forEach(logItem);
+Source: https://eloquentjavascript.net/05_higher_order.html 
+function printItemToConsole(item) {
+    console.log(item);
+}
+
+forEach: anonymous callback functions
+
+const fruit = ['apple', 'orange', 'banana', 'mango', 'peach'];
+
+
+// callback function defined inline as an argument (anonymous function):fruit.forEach((item) => console.log(item));
+
+// you can also do everything in one line:['apple', 'orange', 'banana', 'mango', 'peach'].forEach((item) => console.log(item));
+Source: https://eloquentjavascript.net/05_higher_order.html 
+function printItemToConsole(item) {
+    console.log(item);
+}
+
+forEach: What else could you do?!
+Think of forEach as an abstraction for doing something to every item in a list.
+
+const fruitList = ['apple', 'orange', 'banana', 'mango', 'peach'];
+
+// other stuff you might want to do to every item in a list:
+fruit.forEach(drawToScreen);fruit.forEach(appendToObject);fruit.forEach(printNutrientValue);fruit.forEach(addToDropdownMenu);
+Source: https://eloquentjavascript.net/05_higher_order.html 
+
+Common Error: Definition v. Invocation 
+const fruit = ['apple', 'orange', 'banana', 'mango', 'peach'];
+
+// function 1 (printing to the console):const printItemToConsole = item => console.log(item);
+
+// what’s wrong with this?
+fruit.forEach(printItemToConsole()); 
+
+Source: https://eloquentjavascript.net/05_higher_order.html 
+
+Outline
+Introduction to higher-order functions: forEach
+Other array Methods: map, filter, and toSorted
+Exercises
+
+map
+The map() method creates a new array from calling a function for every array element.
+Identical to forEach EXCEPT it returns an array where each array element is the return value from the map function.
+Example:
+const numbers = [65, 44, 12, 4];
+const squareEm = num => num ** 2;
+const newArr = numbers.map(squareEm);
+Source: https://www.w3schools.com/jsref/jsref_map.asp 
+
+Map Demo
+
+The filter() method creates a new array filled with elements that pass a test provided by a function.
+The function passed to the filter function must return true or false (indicating whether the item should be included or excluded in the resulting array.
+Example:
+const my_nums = [1, 2, 3, 4, 5];
+const nums_greater_than_2 = my_nums.filter(item => item > 2);
+console.log(nums_greater_than_2);
+filter
+Source: https://www.w3schools.com/jsref/jsref_filter.asp 
+
+filter Demo
+
+The toSorted() method creates a new array that applies a sorting function via a callback function
+The callback function passed to the toSorted() function:
+Returns a negative number if a should comes before b
+Returns a positive number if b comes before a
+Returns 0 if a and b are the same
+Example: (a, b) => a - b
+If a=2 and b=10, the function returns -8 (negative), which means:
+“Put a (2) before b (10)”
+toSorted
+Source: https://www.w3schools.com/jsref/jsref_filter.asp 
+
+const numbers = [42, 7, 19, 103, 58];
+
+How do I sort using the toSorted() higher-order function?
+
+toSorted: Number Example
+
+const fruits = ["Banana", "apple", "Mango", "grape", "Orange"];
+
+const caseInsensitiveComparison = (a, b) => a.localeCompare(b);
+
+const fruitsSorted = fruits.toSorted(caseInsensitiveComparison);
+
+
+localeCompare compares two strings according to language rules, not raw character codes.
+toSorted: String Example
+Source: https://www.w3schools.com/jsref/jsref_filter.asp 
+
+const todos = [
+{ id: 3, title: "Write slides", priority: 2 },
+{ id: 1, title: "Grade exams", priority: 3 },
+{ id: 2, title: "Email students", priority: 1 },
+{ id: 4, title: "Prepare lecture", priority: 2 },
+{ id: 5, title: "Update website", priority: 1 }
+];
+
+How do I sort by title? priority? id?
+toSorted: Object Example
+Source: https://www.w3schools.com/jsref/jsref_filter.asp 
+
+Tutorial 7: Partner programming Activity
+Brady
+Cornell
+David
+E
+Jack
+Kelly
+Landen
+Henry
+Merrylyn
+Payton
+Rodrigo
+Simon
+Sofia
+Q

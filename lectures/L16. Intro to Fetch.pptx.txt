@@ -1,0 +1,103 @@
+Intro to Fetch + Promises
+CSCI 344: Advanced Web Technologies
+Spring 2026
+
+Outline
+Intro to the JavaScript fetch API
+Promises
+Summary
+
+Intro to “AJAX”
+AJAX
+AJAX: Stands for “Asynchronous JavaScript and XML”
+Enables JavaScript to make server requests and (optionally) update the current screen
+Not easy to tell that information is even being transmitted to/from a server
+Came on the scene ~2004 (made popular w/Google Mail and Google Maps)
+3
+3
+
+Intro to Fetch
+JavaScript’s Fetch API
+The Fetch API is a newer API for browsers to communicate asynchronously with servers communication (improving upon AJAX – the older way)
+Because this API allows for asynchronous, non-blocking communication with servers, promises were introduced to the JavaScript Language.
+Promises are objects that help programmers manage asynchronous communications.
+
+4
+Source: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+4
+
+What is a Promise?
+Promises exist to handle asynchronous functionality
+Why? If you request a resource the cloud you don’t know how long it’s going to take to process the request.
+Slow machine?
+Network traffic?
+Patchy WIFI!
+To handle this, a “promise” allows you to execute a piece of functionality only after the request completes. 
+It’s like putting a process on the “back burner” until it completes…and in the meantime your browser is free to do other things.
+
+Most requests happen in 2 Parts (w/2 Promises)
+async function getData () {
+  const response = await fetch(url);   // retrieves HTTP headers
+  const data = await response.json();  // retrieves the response body
+}
+Source: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch 
+fetch() returns a promise containing the response (a Response object). This is just an HTTP response object with HTTP header data.
+To extract the body content from the response, we use one of the response’s content methods – in this case the json() method – which returns a promise. When this promise resolves, the variable data will store the response body.
+
+Promises: Two Syntaxes > async await 
+Using the async / await technique. Instead of using “then()” the await keyword ensures that the next line doesn’t execute until the promise resolves.
+const getBusinesses = async () => {
+   let url = 'https://www.apitutor.org/yelp/simple/v3/businesses/search?location=Asheville,+NC';
+   const response = await fetch(url);
+   console.log(response);
+   const jsonData = await response.json();
+   console.log(jsonData);
+};
+
+getBusinesses();
+
+Promises: Two Syntaxes > “then” method
+You can also use the promise’s “then” method, which will execute a callback function when the promise finishes its business...
+let url = 'https://www.apitutor.org/yelp/simple/v3/businesses/search?location=Asheville,+NC'
+fetch(url)
+   .then(response => response.json()) // callback function
+   .then(data => console.log(data));  // callback function
+Be aware of this approach, but it’s less common
+
+Practice
+Download today’s files: https://csci344.github.io/spring2026/course-files/lectures/lecture16.zip 
+
+Partner programming Activity
+Brady
+Cornell
+David
+E
+Jack
+Kelly
+Landen
+Matias
+Q
+Henry
+Merrylyn
+Payton
+Simon
+Sofia
+Sawyer
+Rodrigo
+
+Outline
+Intro to Web Services and Web APIs
+Intro to HTTP
+Interacting with a REST APIs
+Intro to the JavaScript fetch API
+Summary
+
+Summary (2 of 2)
+You can interacting with a Web service in most modern programming languages
+In JavaScript, you can interact with a server by using the browser’s fetch API and promises.
+The fetch API allows you to issue HTTP requests
+Promises allow you to be able to handle asynchronous requests
+The async / await keywords allow you to create functions that can pause code execution until the promise resolves.
+
+When we come back from break
+Read the Homework 3 Instructions before coming to class
