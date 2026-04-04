@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    max-width: 500px;
+    margin: 5vh auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+button.active {
+    background-color: hotpink;
+    border: solid 1px black;
+}
+
+button.normal {
+    background-color: white;
+    border: solid 1px black;
+}
