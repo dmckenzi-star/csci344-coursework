@@ -6,24 +6,19 @@ export default function Posts({ token }) {
   const [posts, setPosts] = useState([]);
 
   async function getPosts() {
-    const data = await getDataFromServer(token, "/api/posts/");
+    const data = await getDataFromServer(token, "/api/posts");
     setPosts(data);
   }
 
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [token]);
 
-  function outputPost(postObject) {
-    return (
-      <Post
-        key={postObject.id}
-        postData={postObject}
-        token={token}
-        onBookmarkChange={getPosts}
-      />
-    );
-  }
-
-  return <>{posts.map(outputPost)}</>;
+  return (
+    <section>
+      {posts.slice(0, 10).map((post) => (
+        <Post key={post.id} post={post} token={token} refreshPosts={getPosts} />
+      ))}
+    </section>
+  );
 }

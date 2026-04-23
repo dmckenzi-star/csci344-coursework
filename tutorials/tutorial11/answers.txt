@@ -1,0 +1,9 @@
+1) Three tables that correspond to resources defined in api.config.yaml are sneakers (from the Sneaker resource), brands (from Brand), and orders (from Order). The users table is not defined anywhere in api.config.yaml but exists in the database — it's created automatically by the generator to handle authentication and ownership.
+
+2) In the sneakers table, two columns look like foreign keys: owner_id, which references a row in the users table (the user who created that sneaker), and brand, which references a row in the brands table. The brand column comes directly from the brand: type: Brand relation defined in api.config.yaml, and owner_id is added automatically by the generator for any resource with owner-based permissions.
+
+3)Required fields in the database have a NOT NULL constraint — the database will reject any attempt to insert a row with that column empty. Optional fields are nullable, meaning a row can exist without a value in that column. For example, in the sneakers table, name, price, and photo are required (marked in the YAML with required: true), so they cannot be NULL; size, is_available, and description are optional, so those columns allow NULL values.
+
+4) npm run seed wipes the existing rows and reloads everything from the CSV files, so changes made through the REST API or data grid are lost when you re-seed. Changes made through the REST API or data grid only affect the live database (app.db) and do not update the CSV files.
+
+5)npm run generate rebuilds the database schema and the CSV templates to match the updated resources in api.config.yaml. If you skip it, the old CSVs and database schema won't match your new config, so npm run seed will fail or insert data into the wrong shape.

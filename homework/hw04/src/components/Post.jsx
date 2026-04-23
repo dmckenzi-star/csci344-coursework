@@ -1,69 +1,58 @@
 import React from "react";
+import LikeButton from "./LikeButton";
 import BookmarkButton from "./BookmarkButton";
+import Comments from "./Comments";
 
-export default function Post({ postData, token, onBookmarkChange }) {
+export default function Post({ post, token, refreshPosts }) {
   return (
-    <section className="bg-white border mb-10">
-      {/* user header */}
-      <div className="p-4 flex justify-between">
+    <article className="bg-white border rounded-md shadow-sm mb-10">
+      <header className="p-4 flex justify-between">
         <h3 className="text-lg font-Comfortaa font-bold">
-          {postData.user.username}
+          {post.user.username}
         </h3>
-        <button className="icon-button">
-          <i className="fas fa-ellipsis-h"></i>
+        <button className="icon-button" aria-label="Post options">
+          <i className="fas fa-ellipsis-h" aria-hidden="true"></i>
         </button>
-      </div>
+      </header>
 
-      {/* image */}
       <img
-        src={postData.image_url}
-        alt={postData.alt_text || "post photo"}
-        width="300"
-        height="300"
+        src={post.image_url}
+        alt={post.alt_text || `Photo by ${post.user.username}`}
         className="w-full bg-cover"
       />
 
       <div className="p-4">
-        {/* buttons */}
         <div className="flex justify-between text-2xl mb-3">
-          <div className="flex gap-2">
-            {/* like button (placeholder for now) */}
-            <button>
-              <i className="far fa-heart"></i>
+          <div>
+            <LikeButton post={post} token={token} refreshPosts={refreshPosts} />
+            <button aria-label="Comment">
+              <i className="far fa-comment" aria-hidden="true"></i>
             </button>
-            <button>
-              <i className="far fa-comment"></i>
-            </button>
-            <button>
-              <i className="far fa-paper-plane"></i>
+            <button aria-label="Share">
+              <i className="far fa-paper-plane" aria-hidden="true"></i>
             </button>
           </div>
           <div>
-            {/* bookmark button */}
             <BookmarkButton
-              postId={postData.id}
-              bookmarkId={postData.current_user_bookmark_id}
+              post={post}
               token={token}
-              onBookmarkChange={onBookmarkChange}
+              refreshPosts={refreshPosts}
             />
           </div>
         </div>
 
-        {/* number of likes */}
-        <p className="font-bold mb-3">{postData.likes.length} likes</p>
+        <p className="font-bold mb-3">{post.likes.length} likes</p>
 
-        {/* caption */}
         <div className="text-sm mb-3">
           <p>
-            <strong>{postData.user.username}</strong> {postData.caption}
+            <strong>{post.user.username}</strong> {post.caption}
           </p>
         </div>
 
-        {/* last updated */}
-        <p className="uppercase text-gray-500 text-xs">
-          {postData.display_time}
-        </p>
+        <Comments comments={post.comments} />
+
+        <p className="text-xs text-gray-700 uppercase">{post.display_time}</p>
       </div>
-    </section>
+    </article>
   );
 }
