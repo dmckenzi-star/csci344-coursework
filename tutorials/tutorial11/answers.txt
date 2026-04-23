@@ -1,9 +1,73 @@
-1) Three tables that correspond to resources defined in api.config.yaml are sneakers (from the Sneaker resource), brands (from Brand), and orders (from Order). The users table is not defined anywhere in api.config.yaml but exists in the database — it's created automatically by the generator to handle authentication and ownership.
+CSCI 344 - Tutorial 11 Short Answers
+David McKenzie
 
-2) In the sneakers table, two columns look like foreign keys: owner_id, which references a row in the users table (the user who created that sneaker), and brand, which references a row in the brands table. The brand column comes directly from the brand: type: Brand relation defined in api.config.yaml, and owner_id is added automatically by the generator for any resource with owner-based permissions.
+Q1. Name three tables that correspond to Resource types defined in api.config.yaml. Which table is not defined by YAML but still exists?
 
-3)Required fields in the database have a NOT NULL constraint — the database will reject any attempt to insert a row with that column empty. Optional fields are nullable, meaning a row can exist without a value in that column. For example, in the sneakers table, name, price, and photo are required (marked in the YAML with required: true), so they cannot be NULL; size, is_available, and description are optional, so those columns allow NULL values.
+Three tables that correspond to resources defined in api.config.yaml are sneakers, brands, and orders. The user’s table is not defined anywhere in 
+the api.config.yaml but exists in the database; it is created automatically by the generator to handle authentication and ownership.
 
-4) npm run seed wipes the existing rows and reloads everything from the CSV files, so changes made through the REST API or data grid are lost when you re-seed. Changes made through the REST API or data grid only affect the live database (app.db) and do not update the CSV files.
+Q2. Pick one resource table. Which columns look like they are referencing data in other tables (foreign keys)?
 
-5)npm run generate rebuilds the database schema and the CSV templates to match the updated resources in api.config.yaml. If you skip it, the old CSVs and database schema won't match your new config, so npm run seed will fail or insert data into the wrong shape.
+In the sneakers table, two columns are foreign keys: owner_id, which references a row in the users table, and brand, which references. 
+a row in the brands table. The brand column comes directly from the "brand: type: Brand" relation defined in api.config.yaml, and owner_id is.
+ added automatically by the generator for any resource with owner-based permissions.
+
+Q3. What looks different between the required and optional fields in the database?
+
+Required fields have NOT NULL; optional fields allow NULL. In sneakers, name, price, and photo are needed; size, is_available, 
+and descriptions are optional.
+
+Q4. What is the difference between changing data with npm run seed versus changing data only through the REST API or data grid?
+
+npm run seed resets and reloads tables from CSV, erasing changes made via the REST API or data grid. REST API and data grid changes only update. 
+the live database, not CSVs.
+
+Q5. Why should you run npm run generate again before npm run seed if you just edited api.config.yaml?
+
+npm run generate updates the schema and CSVs to match your YAML. If skipped, the seed can fail or write data incorrectly.
+
+Q6. How did the list request URL change when you applied the filter(s)?
+
+The path remained/api/sneakers, but a query string was appended after the "?". Without a filter, the URL was. 
+http://localhost:3100/api/sneakers and returned all ten rows. After filtering by name having "Sample", it became. 
+http://localhost:3100/api/sneakers?name=Sample and returned nine rows, the "Converse" row was filtered out because its name did not. 
+have "Sample".
+
+Q7. Suppose your Sneakers API endpoint is /api/sneakers and the name is marked queryable. What URL would you use for a GET request for? 
+sneakers whose name includes "running"?
+
+http://localhost:3100/api/sneakers?name=running
+
+Q8. What is one difference between experimenting in /api/docs and experimenting in the data grid?
+
+/api/docs shows raw API requests and responses. The data grid hides HTTP details and acts like a spreadsheet interface.
+
+Q9. What is one advantage of introducing a separate PlantType resource (with a relation from Plant) instead of keeping species as a plain? 
+string on every Plant row?
+
+If the species is a plain string, people can type it in diverse ways, "Apple", "apple", "apple tree", and you end up with duplicates that are. 
+hard to clean up. Making PlantType a separate resource means the name lives in one place, so if you want to change it, you only must change it. 
+it once.
+
+Q10. Final project: list at least three REST paths you expect to need, including the resource, fields, queryable fields, and one relationship. 
+for each.
+
+My final project will be a Course Planner for tracking courses, assignments, and study time.
+
+1. /api/courses
+   Resource: Course
+   Fields: code (string, e.g., "CSCI 344"), name (string), semester (string, e.g., "Spring 2026"), professor (string), credit_hours (integer)
+   Queryable: code, semester, name
+   Relationship: a Course has many Assignments and many Learning Sessions
+
+2. /api/assignments
+   Resource: Assignment
+   Fields: title (string), due_date (datetime), points (integer), status (string — "todo", "in-progress", or "done"), course (relation to Course)
+   Queryable: title, status, course
+   Relationship: each Assignment belongs to one Course
+
+3. /api/study-sessions
+   Resource: StudySession
+   Fields: date (datetime), duration_minutes (integer), notes (text), course (relation to Course)
+   Queryable: course, date
+   Relationship: each StudySession belongs to one Course
