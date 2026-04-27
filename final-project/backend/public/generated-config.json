@@ -1,0 +1,237 @@
+{
+  "meta": {
+    "configPath": "C:\\Users\\davem\\src\\csci344\\final-project\\backend\\api.config.yaml",
+    "generatedAt": "2026-04-26T01:07:26.273Z",
+    "seedDir": "data\\sample-data"
+  },
+  "resources": [
+    {
+      "type": "Category",
+      "tableName": "categories",
+      "fileBase": "categories",
+      "path": "/api/categories",
+      "operations": [
+        "list",
+        "retrieve",
+        "create",
+        "update",
+        "delete"
+      ],
+      "shareable": false,
+      "ownershipEnabled": true,
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": {
+            "param": "name",
+            "op": "contains"
+          }
+        },
+        {
+          "name": "color",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "storageType": "text",
+          "required": false,
+          "relation": null,
+          "query": null
+        }
+      ],
+      "permissions": {
+        "list": "owner",
+        "retrieve": "owner",
+        "create": "user",
+        "update": "owner",
+        "delete": "owner"
+      },
+      "queryFilters": [
+        {
+          "param": "name",
+          "fieldName": "name",
+          "op": "contains",
+          "type": "string",
+          "storageType": "string",
+          "relation": null
+        },
+        {
+          "param": "owner_id",
+          "fieldName": "owner_id",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        }
+      ]
+    },
+    {
+      "type": "Quest",
+      "tableName": "quests",
+      "fileBase": "quests",
+      "path": "/api/quests",
+      "operations": [
+        "list",
+        "retrieve",
+        "create",
+        "update",
+        "delete"
+      ],
+      "shareable": false,
+      "ownershipEnabled": true,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": {
+            "param": "title",
+            "op": "contains"
+          }
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "storageType": "text",
+          "required": false,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "scheduled_at",
+          "type": "datetime",
+          "storageType": "datetime",
+          "required": true,
+          "relation": null,
+          "query": {
+            "param": "scheduled_at",
+            "op": "eq"
+          }
+        },
+        {
+          "name": "duration_minutes",
+          "type": "integer",
+          "storageType": "integer",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "storageType": "string",
+          "required": false,
+          "relation": null,
+          "query": {
+            "param": "priority",
+            "op": "contains"
+          }
+        },
+        {
+          "name": "is_completed",
+          "type": "boolean",
+          "storageType": "boolean",
+          "required": true,
+          "relation": null,
+          "query": {
+            "param": "is_completed",
+            "op": "eq"
+          }
+        },
+        {
+          "name": "completed_at",
+          "type": "datetime",
+          "storageType": "datetime",
+          "required": false,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "category",
+          "type": "Category",
+          "storageType": "integer",
+          "required": false,
+          "relation": {
+            "resourceType": "Category",
+            "targetField": "id"
+          },
+          "query": {
+            "param": "category",
+            "op": "eq"
+          }
+        }
+      ],
+      "permissions": {
+        "list": "owner",
+        "retrieve": "owner",
+        "create": "user",
+        "update": "owner",
+        "delete": "owner"
+      },
+      "queryFilters": [
+        {
+          "param": "title",
+          "fieldName": "title",
+          "op": "contains",
+          "type": "string",
+          "storageType": "string",
+          "relation": null
+        },
+        {
+          "param": "scheduled_at",
+          "fieldName": "scheduled_at",
+          "op": "eq",
+          "type": "datetime",
+          "storageType": "datetime",
+          "relation": null
+        },
+        {
+          "param": "priority",
+          "fieldName": "priority",
+          "op": "contains",
+          "type": "string",
+          "storageType": "string",
+          "relation": null
+        },
+        {
+          "param": "is_completed",
+          "fieldName": "is_completed",
+          "op": "eq",
+          "type": "boolean",
+          "storageType": "boolean",
+          "relation": null
+        },
+        {
+          "param": "category",
+          "fieldName": "category",
+          "op": "eq",
+          "type": "Category",
+          "storageType": "integer",
+          "relation": {
+            "resourceType": "Category",
+            "targetField": "id"
+          }
+        },
+        {
+          "param": "owner_id",
+          "fieldName": "owner_id",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        }
+      ]
+    }
+  ]
+}

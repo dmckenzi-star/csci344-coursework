@@ -1,0 +1,56 @@
+resources:
+  - type: Category
+    path: /api/categories
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: name
+        type: string
+        required: true
+        query: true
+      - name: color
+        type: string
+        required: true
+      - name: description
+        type: text
+    permissions:
+      list: owner
+      retrieve: owner
+      create: user
+      update: owner
+      delete: owner
+
+  - type: Quest
+    path: /api/quests
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: title
+        type: string
+        required: true
+        query: true
+      - name: description
+        type: text
+      - name: scheduled_at
+        type: datetime
+        required: true
+        query: true
+      - name: duration_minutes
+        type: integer
+        required: true
+      - name: priority
+        type: string
+        query: true
+      - name: is_completed
+        type: boolean
+        required: true
+        query: true
+      - name: completed_at
+        type: datetime
+      - name: category
+        type: Category
+        query: true
+    permissions:
+      list: owner
+      retrieve: owner
+      create: user
+      update: owner
+      delete: owner
