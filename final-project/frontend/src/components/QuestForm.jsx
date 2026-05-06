@@ -13,7 +13,7 @@ export default function QuestForm({ quest, categories, onDone, onCancel }) {
   const [durationMinutes, setDurationMinutes] = useState(
     quest?.duration_minutes || 30,
   );
-  const [priority, setPriority] = useState(quest?.priority || "Medium");
+  const [priority, setPriority] = useState(quest?.priority || "");
   const [isCompleted, setIsCompleted] = useState(quest?.is_completed || false);
   const [categoryId, setCategoryId] = useState(quest?.category?.id || "");
   const [error, setError] = useState("");
@@ -22,13 +22,13 @@ export default function QuestForm({ quest, categories, onDone, onCancel }) {
     e.preventDefault();
     setError("");
 
-    // Build payload 
+    // Build payload
     const payload = {
       title,
       description,
       scheduled_at: scheduledAt, // already an ISO string from DatePicker
       duration_minutes: Number(durationMinutes),
-      priority,
+      priority: priority || null,
       is_completed: isCompleted,
       category: categoryId ? Number(categoryId) : null,
     };
@@ -125,6 +125,7 @@ export default function QuestForm({ quest, categories, onDone, onCancel }) {
               onChange={(e) => setPriority(e.target.value)}
               className="mt-1 w-full rounded border border-slate-300 px-3 py-2"
             >
+              <option value="">— None —</option>
               <option value="Low">Low</option>
               <option value="Medium">Medium</option>
               <option value="High">High</option>
