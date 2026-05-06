@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export default function QuestForm({ quest, categories, onDone, onCancel }) {
   const isEditing = Boolean(quest);
 
-  // Initialize form state from existing quest, or sensible defaults
+  // Initialize form state from existing ques
   const [title, setTitle] = useState(quest?.title || "");
   const [description, setDescription] = useState(quest?.description || "");
   const [scheduledAt, setScheduledAt] = useState(quest?.scheduled_at || "");
@@ -26,7 +26,7 @@ export default function QuestForm({ quest, categories, onDone, onCancel }) {
     const payload = {
       title,
       description,
-      scheduled_at: scheduledAt, // already an ISO string from DatePicker
+      scheduled_at: scheduledAt, 
       duration_minutes: Number(durationMinutes),
       priority: priority || null,
       is_completed: isCompleted,

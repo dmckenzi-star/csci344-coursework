@@ -37,7 +37,7 @@ export async function sendRequest(path, options = {}) {
 }
 
 
-// ---------- Quests ----------
+
 
 export function getQuests() {
   return sendRequest("/api/quests");
@@ -67,7 +67,7 @@ export function deleteQuest(id) {
   });
 }
 
-// ---------- Categories ----------
+
 
 export function getCategories() {
   return sendRequest("/api/categories");

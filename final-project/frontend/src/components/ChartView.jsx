@@ -15,14 +15,13 @@ import {
 const PIE_COLORS = ["#10b981", "#94a3b8"]; // green for done, slate for open
 
 export default function ChartView({ quests, categories }) {
-  // ----- Bar chart data: count quests per category -----
-  // Start with one entry per category, count = 0
+  
   const countsByCategory = categories.map((cat) => ({
     name: cat.name,
     count: 0,
   }));
 
-  // Add an "Uncategorized" bucket for quests with no category
+  // Add an "Uncategorized" bucket
   countsByCategory.push({ name: "Uncategorized", count: 0 });
 
   // Walk the quests and increment the matching bucket
@@ -32,7 +31,7 @@ export default function ChartView({ quests, categories }) {
     if (bucket) bucket.count += 1;
   });
 
-  // ----- Pie chart data: completed vs. open -----
+
   const completedCount = quests.filter((q) => q.is_completed).length;
   const openCount = quests.length - completedCount;
 
